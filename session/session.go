@@ -1508,6 +1508,7 @@ func (s *session) NewTxn(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	logutil.BgLogger().Info("hello transaction")
 	txn.SetVars(s.sessionVars.KVVars)
 	if s.GetSessionVars().GetReplicaRead().IsFollowerRead() {
 		txn.SetOption(kv.ReplicaRead, kv.ReplicaReadFollower)
